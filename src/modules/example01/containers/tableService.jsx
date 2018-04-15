@@ -1,23 +1,36 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { asycGetUserInfo } from '../store/actions'
-import DataTable from '../components/dataTable'
+import React from "react";
+import { connect } from "react-redux";
+import {
+  asycGetUserInfo,
+  updateDataSource,
+  asycPutDataSource,
+  setCurrentItem,
+  asycDelDataSource
+} from "../store/actions";
+import DataTable from "../components/dataTable";
 
 @connect(
-  (state) => {
+  state => {
     return {
-      userItems: state.example01Model.userItems
-    }
+      userItems: state.example01Model.userItems,
+      currentItem: state.example01Model.currentItem
+    };
   },
-  { asycGetUserInfo }
+  {
+    asycGetUserInfo,
+    updateDataSource,
+    asycPutDataSource,
+    setCurrentItem,
+    asycDelDataSource
+  }
 )
 class TableService extends React.Component {
   componentDidMount() {
-    this.props.asycGetUserInfo()
+    this.props.asycGetUserInfo();
   }
   render() {
-    return <DataTable {...this.props} />
+    return <DataTable {...this.props} />;
   }
 }
 
-export default TableService
+export default TableService;

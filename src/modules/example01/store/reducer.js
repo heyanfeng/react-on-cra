@@ -1,9 +1,14 @@
-import { handleActions } from 'redux-actions'
-import { GET_USER_INFO } from './actions'
+import { handleActions } from "redux-actions";
+import {
+  GET_USER_INFO,
+  UPDATE_DATA_SOURCE,
+  SET_CURRENT_EDIT_ITEM
+} from "./actions";
 
 const initalState = {
-  userItems: []
-}
+  userItems: [],
+  currentItem: {}
+};
 
 const example01Model = handleActions(
   {
@@ -12,11 +17,23 @@ const example01Model = handleActions(
         return {
           ...state,
           userItems: action.payload
-        }
+        };
       }
+    },
+    [UPDATE_DATA_SOURCE]: (state, action) => {
+      return {
+        ...state,
+        userItems: action.payload
+      };
+    },
+    [SET_CURRENT_EDIT_ITEM]: (state, action) => {
+      return {
+        ...state,
+        currentItem: { ...action.payload }
+      };
     }
   },
   initalState
-)
+);
 
-export default example01Model
+export default example01Model;
