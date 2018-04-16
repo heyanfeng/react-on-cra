@@ -1,16 +1,17 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 import {
   asycGetUserInfo,
   updateDataSource,
-  asycPutDataSource,
   setCurrentItem,
-  asycDelDataSource
-} from "../store/actions";
-import DataTable from "../components/dataTable";
+  asycDelDataSource,
+  setDialogVisible,
+  setDialogTitle
+} from '../store/actions';
+import DataTable from '../components/dataTable';
 
 @connect(
-  state => {
+  (state) => {
     return {
       userItems: state.example01Model.userItems,
       currentItem: state.example01Model.currentItem
@@ -19,9 +20,10 @@ import DataTable from "../components/dataTable";
   {
     asycGetUserInfo,
     updateDataSource,
-    asycPutDataSource,
     setCurrentItem,
-    asycDelDataSource
+    asycDelDataSource,
+    setDialogVisible,
+    setDialogTitle
   }
 )
 class TableService extends React.Component {
