@@ -2,6 +2,7 @@ import { createAction } from 'redux-actions';
 import axios from 'axios';
 
 export const GET_USER_INFO = 'GET_USER_INFO';
+export const GET_USER_INFO_ASYNC = 'GET_USER_INFO_ASYNC';
 export const UPDATE_DATA_SOURCE = 'UPDATE_DATA_SOURCE';
 export const SET_CURRENT_EDIT_ITEM = 'SET_CURRENT_EDIT_ITEM';
 export const SET_DIALOG_VISIBLE = 'SET_DIALOG_VISIBLE';
@@ -14,11 +15,7 @@ export const SET_DIALOG_TITLE = 'SET_DIALOG_TITLE';
 export const getUserInfo = createAction(GET_USER_INFO);
 
 // 处理异步Action
-export const asycGetUserInfo = () => {
-  return (dispatch) => {
-    axios.get('http://jsonplaceholder.typicode.com/users').then((res) => dispatch(getUserInfo(res.data)));
-  };
-};
+export const asycGetUserInfo = createAction(GET_USER_INFO_ASYNC);
 
 // 设置表格可编辑状态
 export const updateDataSource = createAction(UPDATE_DATA_SOURCE);
